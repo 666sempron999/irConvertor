@@ -16,14 +16,14 @@ eject
 +
 -
 
-int ATT = ;
-int Source = ;
-int right = ;
-int left = ;
-int up = ;
-int down = ;
-int plus  = ;
-int minus = ;
+int ATT = 3;
+int Source = 4;
+int right = 5;
+int left = 6;
+int up = 7;
+int down = 8;
+int plus  = 9;
+int minus = 10;
 
 pinMode(ATT, OUTPUT);
 pinMode(Source, OUTPUT);
