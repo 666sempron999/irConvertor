@@ -6,3 +6,30 @@ band 	- FF10EF -> up 		- 440E5D17
 eject 	- FF50AF -> down 	- 440EDD97
 + 		- FF28D7 -> + 		- 440E450F
 - 		- FFA857 -> - 		- 440EC58F
+
+mute
+mode
+right
+left
+band
+eject
++
+-
+
+int ATT = ;
+int Source = ;
+int right = ;
+int left = ;
+int up = ;
+int down = ;
+int plus  = ;
+int minus = ;
+
+pinMode(ATT, OUTPUT);
+pinMode(Source, OUTPUT);
+pinMode(right, OUTPUT);
+pinMode(left, OUTPUT);
+pinMode(up, OUTPUT);
+pinMode(down, OUTPUT);
+pinMode(plus , OUTPUT);
+pinMode(minus, OUTPUT);

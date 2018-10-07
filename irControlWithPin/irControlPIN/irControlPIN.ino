@@ -1,14 +1,34 @@
 #include "IRremote.h"
 
 IRrecv irrecv(2);
-IRsend irsend;
-
 decode_results results;
+
+// Пины для пульта
+int ATT = 3;
+int Source = 4;
+int right = 5;
+int left = 6;
+int up = 7;
+int down = 8;
+int plus  = 9;
+int minus = 10;
+
+// Длительность импульса на оптопару
+int pilseDelay = 80;
 
 void setup() 
 {
   Serial.begin(9600);
   irrecv.enableIRIn();
+  
+  pinMode(ATT, OUTPUT);
+  pinMode(Source, OUTPUT);
+  pinMode(right, OUTPUT);
+  pinMode(left, OUTPUT);
+  pinMode(up, OUTPUT);
+  pinMode(down, OUTPUT);
+  pinMode(plus , OUTPUT);
+  pinMode(minus, OUTPUT);
 }
 
 void loop() 
@@ -19,14 +39,9 @@ void loop()
     if (results.value==0xFF906F)
     {
       Serial.println("Mute is presed");
-      irsend.sendJVC(0x440E054F, 32, 0);
-      delayMicroseconds(75);
-      irsend.sendJVC(0x440E054F, 32, 1);
-      delayMicroseconds(75);
-      irsend.sendJVC(0x440E054F, 32, 1);
-//      irsend.sendSony(0x440E054F, 12);
-      
-      delay(50);
+      digitalWrite(ATT, HIGH);
+      delay(pilseDelay);
+      digitalWrite(ATT, LOW);
       irrecv.enableIRIn();
     }
     
@@ -34,8 +49,9 @@ void loop()
     if (results.value==0xFF8877)
     {
       Serial.println("Mode is presed");
-      irsend.sendJVC(0x440E85CF, 64, 1);
-      delay(50);
+      digitalWrite(Source, HIGH);
+      delay(pilseDelay);
+      digitalWrite(Source, LOW);
       irrecv.enableIRIn();
     }
     
@@ -43,8 +59,9 @@ void loop()
     if (results.value==0xFFE01F)
     {
       Serial.println("Right is presed");
-      irsend.sendJVC(0x440E3D77, 64, 1);
-      delay(50);
+      digitalWrite(right, HIGH);
+      delay(pilseDelay);
+      digitalWrite(right, LOW);
       irrecv.enableIRIn();
     }
     
@@ -52,8 +69,9 @@ void loop()
     if (results.value==0xFF609F)
     {
       Serial.println("Left is presed");
-      irsend.sendJVC(0x440EBDF7, 64, 1);
-      delay(50);
+      digitalWrite(left, HIGH);
+      delay(pilseDelay);
+      digitalWrite(left, LOW);
       irrecv.enableIRIn();
     }
     
@@ -61,8 +79,9 @@ void loop()
     if (results.value==0xFF10EF)
     {
       Serial.println("Band is presed");
-      irsend.sendJVC(0x440E5D17, 64, 1);
-      delay(50);
+      digitalWrite(up, HIGH);
+      delay(pilseDelay);
+      digitalWrite(up, LOW);
       irrecv.enableIRIn();
     }
     
@@ -70,9 +89,9 @@ void loop()
     if (results.value==0xFF50AF)
     {
       Serial.println("Eject is presed");
-      irsend.sendJVC(0xA5CC887E, 256, 1);
-      irsend.sendJVC(0xFFFFFFFF, 64, 1);
-      delay(50);
+      digitalWrite(down, HIGH);
+      delay(pilseDelay);
+      digitalWrite(down, LOW);
       irrecv.enableIRIn();
     }
 
@@ -80,8 +99,9 @@ void loop()
     if (results.value==0xFF28D7)
     {
       Serial.println("+ is presed");
-      irsend.sendJVC(0x440E450F, 64, 1);
-      delay(50);
+      digitalWrite(plus, HIGH);
+      delay(pilseDelay);
+      digitalWrite(plus, LOW);
       irrecv.enableIRIn();
     }
 
@@ -89,8 +109,9 @@ void loop()
     if (results.value==0xFFA857)
     {
       Serial.println("- is presed");
-      irsend.sendJVC(0x440EC58F, 32, 0);
-      delay(50);
+      digitalWrite(minus, HIGH);
+      delay(pilseDelay);
+      digitalWrite(minus, LOW);
       irrecv.enableIRIn();
     }
 
