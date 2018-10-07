@@ -1,0 +1,8 @@
+mute 	- FF906F -> ATT 	- 440E054F
+mode 	- FF8877 -> Source 	- 440E85CF
+right 	- FFE01F -> right 	- 440E3D77
+left 	- FF609F -> left 	- 440EBDF7
+band 	- FF10EF -> up 		- 440E5D17 
+eject 	- FF50AF -> down 	- 440EDD97
++ 		- FF28D7 -> + 		- 440E450F
+- 		- FFA857 -> - 		- 440EC58F
